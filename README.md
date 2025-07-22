@@ -1,8 +1,15 @@
 # abruno-dev-config
 
-[![Prettier](https://img.shields.io/badge/code%20style-prettier-ff69b4.svg?style=flat&logo=prettier)](https://prettier.io/)
+[![Build Status](https://github.com/abruno/abruno-dev-config/actions/workflows/ci.yml/badge.svg)](https://github.com/abruno/abruno-dev-config/actions/workflows/ci.yml)
+[![npm version](https://img.shields.io/npm/v/abruno-dev-config.svg)](https://www.npmjs.com/package/abruno-dev-config)
+[![npm downloads](https://img.shields.io/npm/dm/abruno-dev-config.svg)](https://www.npmjs.com/package/abruno-dev-config)
+[![Code Style](https://img.shields.io/badge/code%20style-prettier-ff69b4.svg?style=flat&logo=prettier)](https://prettier.io/)
 [![ESLint](https://img.shields.io/badge/lint-eslint-4B32C3?logo=eslint)](https://eslint.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
+[![Contributors](https://img.shields.io/github/contributors/abruno/abruno-dev-config)](https://github.com/abruno/abruno-dev-config/graphs/contributors)
+[![Node.js](https://img.shields.io/badge/Node.js-20+-green.svg)](https://nodejs.org/)
+[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://conventionalcommits.org)
 [![semantic-release](https://img.shields.io/badge/semantic--release-automated%20releases-brightgreen?logo=semantic-release)](https://github.com/semantic-release/semantic-release)
 
 A collection of shareable setups for common development tools like ESLint, Prettier, Commitlint,
