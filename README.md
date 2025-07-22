@@ -141,7 +141,8 @@ CSS, and HTML files.
 1. Extend the setup in your project’s `.prettierrc.js`:
 
    ```js
-   module.exports = require('abruno-dev-config/prettier/.prettierrc.js');
+   import config from 'abruno-dev-config/prettier';
+   export default config;
    ```
 
 2. Format your code:
@@ -197,7 +198,8 @@ Enforces conventional commit messages for clarity and consistency.
 1. Create or update your `commitlint.config.js`:
 
    ```js
-   module.exports = require('abruno-dev-config/commitlint.config');
+   import config from 'abruno-dev-config/commitlint.config';
+   export default config;
    ```
 
 2. Write commit messages following the enforced style:
