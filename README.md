@@ -57,8 +57,8 @@ npm install --save-dev abruno-dev-config eslint @typescript-eslint/eslint-plugin
 
 ### ESLint
 
-**What it does:** Provides comprehensive linting for JavaScript, TypeScript, React, and Node.js
-projects. Enforces best practices, code style, and import sorting.
+Provides comprehensive linting for JavaScript, TypeScript, React, and Node.js projects. Enforces
+best practices, code style, and import sorting.
 
 **Features:**
 
@@ -95,8 +95,8 @@ projects. Enforces best practices, code style, and import sorting.
 
 ### TypeScript
 
-**What it does:** Provides a base `tsconfig.json` for modern TypeScript projects, supporting ESM,
-Node.js, React, and path aliases.
+Provides a base `tsconfig.json` for modern TypeScript projects, supporting ESM, Node.js, React, and
+path aliases.
 
 **Features:**
 
@@ -119,8 +119,8 @@ Node.js, React, and path aliases.
 
 ### Prettier
 
-**What it does:** Ensures consistent code formatting across JavaScript, TypeScript, React, Node.js,
-Markdown, JSON, CSS, and HTML files.
+Ensures consistent code formatting across JavaScript, TypeScript, React, Node.js, Markdown, JSON,
+CSS, and HTML files.
 
 **Features:**
 
@@ -145,8 +145,8 @@ Markdown, JSON, CSS, and HTML files.
 
 ### Logger
 
-**What it does:** Provides a simple, production-ready logger for Node.js, Express, Next.js, and
-other JavaScript/TypeScript projects.
+Provides a simple, production-ready logger for Node.js, Express, Next.js, and other
+JavaScript/TypeScript projects.
 
 **Features:**
 
@@ -177,7 +177,7 @@ other JavaScript/TypeScript projects.
 
 ### Commitlint
 
-**What it does:** Enforces conventional commit messages for clarity and consistency.
+Enforces conventional commit messages for clarity and consistency.
 
 **Features:**
 
