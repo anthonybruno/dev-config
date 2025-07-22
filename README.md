@@ -196,3 +196,9 @@ Enforces conventional commit messages for clarity and consistency.
 2. Write commit messages following the enforced style:
    - `feat: add user login page`
    - `fix(api): handle empty request body`
+
+## Development Notes
+
+> **Note:** Some ESLint warnings (like `import/no-unresolved` for peer dependencies) are
+> intentionally suppressed in this repo's config files. This is expected for shareable config
+> packages, since consumers install peer dependencies themselves. See the ESLint config for details.

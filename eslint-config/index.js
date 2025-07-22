@@ -49,11 +49,23 @@ export default [
       env: { jest: true },
     },
   },
-  // Allow default exports in config files for compatibility with tool CLIs (e.g., Prettier, ESLint, etc.)
+  // Allow default exports in config files for compatibility with tool CLIs
   {
-    files: ['*.config.js', '.prettierrc.js'],
+    files: [
+      '*.config.js',
+      '.prettierrc.js',
+      'eslint-config/index.js',
+      'prettier/.prettierrc.js',
+    ],
     rules: {
       'import/no-default-export': 'off',
+    },
+  },
+  // Suppress import/no-unresolved for config entry points, since peer dependencies are not installed in the package repo itself
+  {
+    files: ['eslint-config/index.js'],
+    rules: {
+      'import/no-unresolved': 'off',
     },
   },
 ];
