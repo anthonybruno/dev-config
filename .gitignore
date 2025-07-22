@@ -1,0 +1,21 @@
+# Node modules
+node_modules/
+
+# Logs
+*.log
+
+# Build output
+/dist/
+/build/
+
+# Test coverage
+coverage/
+
+# Environment variables
+.env*
+
+# OS and editor junk
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/ 

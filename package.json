@@ -1,0 +1,66 @@
+{
+  "name": "abruno-dev-config",
+  "version": "0.0.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "type": "module",
+  "main": "index.js",
+  "exports": {
+    "./eslint-config": "./eslint-config/index.js",
+    "./prettier": "./prettier/.prettierrc.js",
+    "./tsconfig": "./tsconfig/tsconfig.base.json",
+    "./logger": "./logger/index.js",
+    "./commitlint.config": "./commitlint.config.js"
+  },
+  "files": [
+    "eslint-config",
+    "prettier",
+    "tsconfig",
+    "logger",
+    "commitlint.config.js"
+  ],
+  "dependencies": {
+    "winston": "^3.10.0"
+  },
+  "peerDependencies": {
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "eslint": "^8.0.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-import": "^2.29.0",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "typescript": ">=5.0.0"
+  },
+  "devDependencies": {
+    "@commitlint/config-conventional": "^19.8.1",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^11.0.3",
+    "commitlint": "^19.8.1",
+    "conventional-changelog-conventionalcommits": "^9.1.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.2",
+    "prettier": "^3.2.5",
+    "prettier-plugin-tailwindcss": "^0.6.13",
+    "semantic-release": "^24.2.7"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write ."
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "lint-staged": {
+    "*.{ts,js,js,json,md}": [
+      "prettier --write"
+    ],
+    "*.{ts,js,js}": [
+      "eslint --fix"
+    ]
+  }
+}
