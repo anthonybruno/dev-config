@@ -1,71 +1,234 @@
 /**
- * ESLint configuration for shared TypeScript/JavaScript projects.
- * Extends recommended rules for TypeScript, import sorting, and Prettier integration.
+ * ESLint configuration for modern TypeScript/JavaScript projects.
+ *
+ * This configuration enforces essential best practices for front-end development,
+ * focusing on maintainability, code quality, and developer productivity.
+ * Designed for solo developers and small teams who value clean, maintainable code.
+ *
  * @usage Import or extend this config in your project's eslint.config.js.
  */
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
 
-import parser from '@typescript-eslint/parser';
-import tsPlugin from '@typescript-eslint/eslint-plugin';
-import importPlugin from 'eslint-plugin-import';
-import simpleImportSortPlugin from 'eslint-plugin-simple-import-sort';
+const loadPlugin = async (pluginName) => {
+  try {
+    return (await import(pluginName)).default;
+  } catch {
+    console.warn(
+      `${pluginName} not found. Refer to the README for information on how to install the plugin.`,
+    );
+    return null;
+  }
+};
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+const [typescriptEslint, typescriptParser, importPlugin] = await Promise.all([
+  loadPlugin('@typescript-eslint/eslint-plugin'),
+  loadPlugin('@typescript-eslint/parser'),
+  loadPlugin('eslint-plugin-import'),
+]);
 
-export default [
+// Core TypeScript rules for modern development
+const typescriptRules = typescriptEslint && {
+  '@typescript-eslint/consistent-type-imports': [
+    'error',
+    {
+      prefer: 'type-imports',
+      disallowTypeAnnotations: false,
+    },
+  ],
+  '@typescript-eslint/no-unused-vars': [
+    'error',
+    {
+      argsIgnorePattern: '^_',
+      varsIgnorePattern: '^_',
+      caughtErrorsIgnorePattern: '^_',
+    },
+  ],
+  '@typescript-eslint/no-explicit-any': 'error',
+
+  '@typescript-eslint/no-non-null-assertion': 'error',
+  '@typescript-eslint/no-floating-promises': 'error',
+  '@typescript-eslint/await-thenable': 'error',
+  '@typescript-eslint/no-misused-promises': 'error',
+  '@typescript-eslint/require-await': 'error',
+  '@typescript-eslint/no-unnecessary-type-assertion': 'error',
+
+  '@typescript-eslint/no-unnecessary-condition': 'error',
+  '@typescript-eslint/consistent-return': 'error',
+  '@typescript-eslint/no-empty-function': 'error',
+  '@typescript-eslint/no-inferrable-types': 'error',
+  '@typescript-eslint/no-var-requires': 'error',
+  '@typescript-eslint/naming-convention': [
+    'error',
+    {
+      selector: 'interface',
+      format: ['PascalCase'],
+      custom: {
+        regex: '^I[A-Z]',
+        match: false,
+      },
+    },
+    {
+      selector: 'typeAlias',
+      format: ['PascalCase'],
+    },
+    {
+      selector: 'enum',
+      format: ['PascalCase'],
+    },
+  ],
+};
+
+// Essential code style and quality rules
+const baseRules = {
+  'no-console': [
+    'warn',
+    {
+      allow: ['warn', 'error'],
+    },
+  ],
+  'no-debugger': 'error',
+  semi: ['error', 'always'],
+  quotes: ['error', 'single', { avoidEscape: true }],
+  'comma-dangle': ['error', 'always-multiline'],
+  'prefer-const': 'error',
+  'prefer-template': 'error',
+  'object-shorthand': 'error',
+  'prefer-destructuring': ['error', { array: true, object: true }],
+  'prefer-arrow-callback': 'error',
+  'no-duplicate-imports': 'error',
+  'no-unused-expressions': 'error',
+  'no-eval': 'error',
+  'no-implied-eval': 'error',
+  'no-alert': 'error',
+  'max-lines-per-function': ['warn', 50],
+  'max-params': ['warn', 4],
+  'no-nested-ternary': 'warn',
+};
+
+// Import organization rules
+const importRules = importPlugin && {
+  'import/order': [
+    'error',
+    {
+      groups: [
+        'builtin',
+        'external',
+        'internal',
+        'parent',
+        'sibling',
+        'index',
+        'type',
+      ],
+      'newlines-between': 'always',
+      alphabetize: {
+        order: 'asc',
+        caseInsensitive: true,
+      },
+      pathGroups: [
+        {
+          pattern: 'react',
+          group: 'external',
+          position: 'before',
+        },
+        {
+          pattern: '@/**',
+          group: 'internal',
+          position: 'after',
+        },
+      ],
+    },
+  ],
+  'import/no-duplicates': 'error',
+  'import/no-unresolved': 'warn',
+  'import/prefer-default-export': 'off',
+  'import/no-default-export': 'warn',
+  'import/extensions': [
+    'error',
+    'ignorePackages',
+    {
+      js: 'never',
+      ts: 'never',
+      tsx: 'never',
+    },
+  ],
+  'import/no-commonjs': 'error',
+  'import/no-cycle': 'error',
+};
+
+// Code formatting rules
+const formattingRules = {
+  'arrow-parens': ['error', 'always'],
+  'object-curly-spacing': ['error', 'always'],
+  'array-bracket-spacing': ['error', 'never'],
+  'no-trailing-spaces': 'error',
+  'eol-last': 'error',
+  'no-multiple-empty-lines': ['error', { max: 1, maxEOF: 0 }],
+  'no-tabs': 'error',
+  indent: ['error', 2],
+  'linebreak-style': ['error', 'unix'],
+  'max-len': [
+    'warn',
+    {
+      code: 100,
+      ignoreUrls: true,
+      ignoreStrings: true,
+      ignoreTemplateLiterals: true,
+    },
+  ],
+};
+
+const baseConfig = [
   {
     files: ['**/*.ts', '**/*.js'],
-    ignores: ['dist/', 'node_modules/', '*.config.js'],
+    ignores: ['dist/', 'node_modules/', '*.config.js', 'CHANGELOG.md'],
     languageOptions: {
-      parser,
-      ecmaVersion: 2021,
+      parser: typescriptParser,
+      ecmaVersion: 2022,
       sourceType: 'module',
       parserOptions: {
-        tsconfigRootDir: __dirname,
+        tsconfigRootDir: process.cwd(),
+        project: './tsconfig.json',
       },
     },
     plugins: {
-      '@typescript-eslint': tsPlugin,
-      import: importPlugin,
-      'simple-import-sort': simpleImportSortPlugin,
+      ...(typescriptEslint && { '@typescript-eslint': typescriptEslint }),
+      ...(importPlugin && { import: importPlugin }),
     },
     rules: {
-      '@typescript-eslint/no-unused-vars': ['error'],
-      '@typescript-eslint/explicit-function-return-type': 'warn',
-      '@typescript-eslint/consistent-type-imports': 'error',
-      'no-console': 'warn',
-      'import/order': ['error', { 'newlines-between': 'always' }],
-      'import/no-duplicates': 'error',
-      'import/no-unresolved': 'warn',
-      'import/prefer-default-export': 'off',
-      'import/no-default-export': 'warn',
+      ...(typescriptRules || {}),
+      ...baseRules,
+      ...(importRules || {}),
+      ...formattingRules,
     },
   },
+
+  // Test Files Config
   {
     files: ['*.test.ts', '*.test.tsx', '*.spec.ts', '*.spec.tsx'],
     languageOptions: {
       env: { jest: true },
     },
+    rules: {
+      'no-console': 'off',
+      ...(typescriptEslint && { '@typescript-eslint/no-explicit-any': 'off' }),
+      'max-lines-per-function': 'off',
+    },
   },
-  // Allow default exports in config files for compatibility with tool CLIs
+
+  // Config Files Override
   {
     files: [
       '*.config.js',
       '.prettierrc.js',
       'eslint-config/index.js',
+      'eslint-config/*.js',
       'prettier/.prettierrc.js',
     ],
     rules: {
       'import/no-default-export': 'off',
-    },
-  },
-  // Suppress import/no-unresolved for config entry points, since peer dependencies are not installed in the package repo itself
-  {
-    files: ['eslint-config/index.js'],
-    rules: {
-      'import/no-unresolved': 'off',
+      'no-console': 'off',
+      'import/extensions': 'off',
     },
   },
 ];
+
+export default baseConfig;

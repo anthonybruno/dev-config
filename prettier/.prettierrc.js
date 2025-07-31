@@ -1,7 +1,6 @@
 /**
- * Prettier configuration for consistent code formatting across projects.
- * Includes Tailwind CSS plugin and file-specific overrides.
- * @usage Require or extend this config in your project's .prettierrc.js.
+ * Prettier configuration for consistent code formatting.
+ * Designed for solo developers and small teams.
  */
 const config = {
   printWidth: 80,
@@ -27,20 +26,6 @@ const config = {
         printWidth: 100,
         proseWrap: 'always',
       },
-    },
-    {
-      files: '*.json',
-      options: {
-        printWidth: 100,
-      },
-    },
-    {
-      files: '*.css',
-      options: { printWidth: 100 },
-    },
-    {
-      files: '*.html',
-      options: { printWidth: 100 },
     },
   ],
 };

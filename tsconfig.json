@@ -1,12 +1,8 @@
 {
+  "extends": "./tsconfig/tsconfig.base.json",
   "compilerOptions": {
-    "module": "ESNext",
-    "target": "ES2021",
-    "outDir": "dist",
-    "moduleResolution": "node",
-    "declaration": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true
+    "allowJs": true
   },
-  "include": ["logger"]
+  "include": ["eslint-config/**/*.js", "prettier/**/*.js", ".prettierrc.js"],
+  "exclude": ["dist", "node_modules"]
 }

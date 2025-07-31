@@ -1,54 +1,66 @@
 {
   "name": "abruno-dev-config",
   "version": "0.0.0",
+  "description": "Modern ESLint, TypeScript, and Prettier configurations for TypeScript/JavaScript development",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/anthonybruno/dev-config.git"
+  },
+  "author": "Anthony Bruno",
+  "license": "MIT",
   "publishConfig": {
     "access": "public"
   },
   "type": "module",
   "main": "index.js",
   "exports": {
-    "./eslint-config": "./eslint-config/index.js",
+    "./eslint": "./eslint-config/index.js",
+    "./eslint/base": "./eslint-config/index.js",
+    "./eslint/node": "./eslint-config/node.js",
+    "./eslint/react": "./eslint-config/react.js",
+    "./eslint/data-processing": "./eslint-config/data-processing.js",
     "./prettier": "./prettier/.prettierrc.js",
     "./tsconfig": "./tsconfig/tsconfig.base.json",
-    "./logger": "./logger/index.js",
     "./commitlint.config": "./commitlint.config.js"
   },
   "files": [
     "eslint-config",
     "prettier",
     "tsconfig",
-    "logger",
     "commitlint.config.js"
   ],
-  "dependencies": {
-    "winston": "^3.10.0"
-  },
   "peerDependencies": {
-    "@typescript-eslint/eslint-plugin": "^7.0.0",
-    "@typescript-eslint/parser": "^7.0.0",
-    "eslint": "^8.0.0",
-    "eslint-config-prettier": "^9.0.0",
-    "eslint-plugin-import": "^2.29.0",
-    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "@typescript-eslint/eslint-plugin": ">=8.0.0",
+    "@typescript-eslint/parser": ">=8.0.0",
+    "eslint": ">=8.0.0",
+    "eslint-config-prettier": ">=8.0.0",
+    "eslint-plugin-import": ">=2.0.0",
+    "eslint-plugin-simple-import-sort": ">=9.0.0",
     "typescript": ">=5.0.0"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^19.8.1",
-    "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "@semantic-release/github": "^11.0.3",
+    "@typescript-eslint/eslint-plugin": "^8.38.0",
+    "@typescript-eslint/parser": "^8.38.0",
     "commitlint": "^19.8.1",
-    "conventional-changelog-conventionalcommits": "^9.1.0",
+    "eslint": "^9.32.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
     "husky": "^9.1.7",
     "lint-staged": "^16.1.2",
-    "prettier": "^3.2.5",
-    "prettier-plugin-tailwindcss": "^0.6.13",
-    "semantic-release": "^24.2.7"
+    "prettier": "^3.6.2",
+    "prettier-plugin-tailwindcss": "^0.6.14",
+    "semantic-release": "^24.2.7",
+    "typescript": "^5.0.0"
   },
   "scripts": {
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "prepare": "husky"
   },
   "commitlint": {
     "extends": [
@@ -56,10 +68,10 @@
     ]
   },
   "lint-staged": {
-    "*.{ts,js,js,json,md}": [
+    "*.{ts,js,json,md}": [
       "prettier --write"
     ],
-    "*.{ts,js,js}": [
+    "*.{ts,js}": [
       "eslint --fix"
     ]
   }
