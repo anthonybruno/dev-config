@@ -1,4 +1,4 @@
-# `abruno-dev-config`
+# Dev Config
 
 Modern ESLint, TypeScript, and Prettier configurations for TypeScript/JavaScript development. Built
 for solo developers and small teams who value clean, maintainable code.
@@ -8,6 +8,15 @@ for solo developers and small teams who value clean, maintainable code.
 ```sh
 npx install-peerdeps -D abruno-dev-config
 ```
+
+## Features
+
+- **TypeScript** with strict type checking
+- **Import organization** with automatic sorting
+- **Accessibility rules** for React projects
+- **Security best practices** (no-eval, no-implied-eval)
+- **Modern patterns** (nullish coalescing, optional chaining)
+- **Zero conflicts** with Prettier
 
 ## Configurations
 
@@ -47,7 +56,7 @@ export default dataProcessingConfig;
 
 ### TypeScript
 
-```json
+```bash
 // tsconfig.json
 {
   "extends": "abruno-dev-config/tsconfig"
@@ -64,6 +73,9 @@ export default config;
 
 ## Dependencies
 
+Most essential dependencies are included as peer dependencies. For specific configurations, install
+these as dev dependencies to keep package sizes smaller:
+
 **React/Next.js:**
 
 ```bash
@@ -75,15 +87,6 @@ npm i -D eslint-plugin-react eslint-plugin-react-hooks eslint-plugin-jsx-a11y @n
 ```bash
 npm i -D eslint-plugin-node
 ```
-
-## Features
-
-- **TypeScript** with strict type checking
-- **Import organization** with automatic sorting
-- **Accessibility rules** for React projects
-- **Security best practices** (no-eval, no-implied-eval)
-- **Modern patterns** (nullish coalescing, optional chaining)
-- **Zero conflicts** with Prettier
 
 ## Extending Configurations
 
@@ -105,7 +108,7 @@ export default [
 
 ## TypeScript Path Mapping
 
-```json
+```bash
 // tsconfig.json
 {
   "extends": "abruno-dev-config/tsconfig",
