@@ -56,7 +56,8 @@ const nodeConfig = [
   {
     files: ['**/*.ts', '**/*.js'],
     languageOptions: {
-      env: { node: true, es2022: true },
+      ecmaVersion: 2022,
+      sourceType: 'module',
     },
     plugins: {
       ...(nodePlugin && { node: nodePlugin }),

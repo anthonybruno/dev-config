@@ -101,7 +101,8 @@ const reactConfig = [
   {
     files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
     languageOptions: {
-      env: { browser: true, es2022: true },
+      ecmaVersion: 2022,
+      sourceType: 'module',
       parserOptions: { ecmaFeatures: { jsx: true } },
     },
     plugins: {
