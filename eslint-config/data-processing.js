@@ -10,17 +10,6 @@
 
 import baseConfig from './index.js';
 
-const loadPlugin = async (pluginName) => {
-  try {
-    return (await import(pluginName)).default;
-  } catch {
-    console.warn(`${pluginName} not found. Related rules will be disabled.`);
-    return null;
-  }
-};
-
-const [nodePlugin] = await Promise.all([loadPlugin('eslint-plugin-node')]);
-
 // Data processing specific rules
 const dataProcessingRules = {
   // Allow some flexibility for ML/data processing
@@ -41,24 +30,6 @@ const dataProcessingRules = {
   'max-params': ['warn', 6], // Allow more params for data processing
 };
 
-// Node.js rules for data processing
-const nodeRules = nodePlugin
-  ? {
-    'node/no-unsupported-features/es-syntax': 'error',
-    'node/no-missing-import': 'error',
-    'node/no-process-exit': 'off', // Allow in data pipelines
-    'node/no-unpublished-require': 'error',
-    'node/no-deprecated-api': 'warn',
-    'node/no-callback-literal': 'error',
-    'node/no-path-concat': 'error',
-    'node/no-sync': 'error',
-    'node/no-new-require': 'error',
-    'node/no-mixed-requires': 'error',
-    'node/no-process-env': 'warn',
-    'node/global-require': 'error',
-  }
-  : {};
-
 const dataProcessingConfig = [
   ...baseConfig,
 
@@ -68,12 +39,8 @@ const dataProcessingConfig = [
       ecmaVersion: 2022,
       sourceType: 'module',
     },
-    plugins: {
-      ...(nodePlugin && { node: nodePlugin }),
-    },
     rules: {
       ...dataProcessingRules,
-      ...nodeRules,
     },
   },
 

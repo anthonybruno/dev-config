@@ -10,40 +10,25 @@
 
 import baseConfig from './index.js';
 
-const loadPlugin = async (pluginName) => {
-  try {
-    return (await import(pluginName)).default;
-  } catch {
-    console.warn(`${pluginName} not found. Related rules will be disabled.`);
-    return null;
-  }
-};
-
-const [nodePlugin] = await Promise.all([loadPlugin('eslint-plugin-node')]);
-
-const nodeRules = nodePlugin
-  ? {
-    'node/no-unsupported-features/es-syntax': 'error',
-    'node/no-missing-import': 'error',
-    'node/no-process-exit': 'off', // Allow in server environments
-    'node/no-unpublished-require': 'error',
-    'node/no-deprecated-api': 'warn',
-    'node/no-callback-literal': 'error',
-    'node/no-path-concat': 'error',
-    'node/no-sync': 'error',
-    'node/no-new-require': 'error',
-    'node/no-mixed-requires': 'error',
-    'node/no-process-env': 'warn',
-    'node/global-require': 'error',
-  }
-  : {};
-
+// Modern Node.js/Server rules
 const serverRules = {
   // Server-specific async/await patterns
   '@typescript-eslint/no-floating-promises': 'error',
   '@typescript-eslint/await-thenable': 'error',
   '@typescript-eslint/no-misused-promises': 'error',
   '@typescript-eslint/require-await': 'error',
+
+  // Node.js/Express server environment rules
+  'no-process-exit': 'off',
+  'no-console': 'off',
+  'no-sync': 'error',
+  'no-path-concat': 'error',
+  'no-new-require': 'error',
+  'no-mixed-requires': 'error',
+  'no-process-env': 'warn',
+  'no-global-assign': 'error',
+  'no-implied-eval': 'error',
+  'no-eval': 'error',
 };
 
 const nodeEnvRules = {
@@ -60,11 +45,7 @@ const nodeConfig = [
       ecmaVersion: 2022,
       sourceType: 'module',
     },
-    plugins: {
-      ...(nodePlugin && { node: nodePlugin }),
-    },
     rules: {
-      ...nodeRules,
       ...serverRules,
       ...nodeEnvRules,
     },

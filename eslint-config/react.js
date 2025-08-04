@@ -100,6 +100,14 @@ const reactConfig = [
 
   {
     files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
+    ignores: [
+      '**/.next/**',
+      '**/dist/**',
+      '**/build/**',
+      '**/node_modules/**',
+      '**/*.config.js',
+      '**/*.config.ts',
+    ],
     languageOptions: {
       ecmaVersion: 2022,
       sourceType: 'module',
