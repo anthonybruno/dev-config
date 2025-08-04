@@ -21,21 +21,22 @@ const loadPlugin = async (pluginName) => {
 
 const [nodePlugin] = await Promise.all([loadPlugin('eslint-plugin-node')]);
 
-const nodeRules = nodePlugin && {
-  'node/no-unsupported-features/es-syntax': 'error',
-  'node/no-missing-import': 'error',
-  'node/no-process-exit': 'off', // Allow in server environments
-  'node/no-unpublished-require': 'error',
-  'node/no-deprecated-api': 'warn',
-  'node/no-callback-literal': 'error',
-  'node/no-path-concat': 'error',
-  'node/no-sync': 'error',
-  'node/no-new-require': 'error',
-  'node/no-mixed-requires': 'error',
-  'node/no-process-env': 'warn',
-  'node/global-require': 'error',
-  'node/no-buffer-constructor': 'error',
-};
+const nodeRules = nodePlugin
+  ? {
+    'node/no-unsupported-features/es-syntax': 'error',
+    'node/no-missing-import': 'error',
+    'node/no-process-exit': 'off', // Allow in server environments
+    'node/no-unpublished-require': 'error',
+    'node/no-deprecated-api': 'warn',
+    'node/no-callback-literal': 'error',
+    'node/no-path-concat': 'error',
+    'node/no-sync': 'error',
+    'node/no-new-require': 'error',
+    'node/no-mixed-requires': 'error',
+    'node/no-process-env': 'warn',
+    'node/global-require': 'error',
+  }
+  : {};
 
 const serverRules = {
   // Server-specific async/await patterns

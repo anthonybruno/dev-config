@@ -42,21 +42,22 @@ const dataProcessingRules = {
 };
 
 // Node.js rules for data processing
-const nodeRules = nodePlugin && {
-  'node/no-unsupported-features/es-syntax': 'error',
-  'node/no-missing-import': 'error',
-  'node/no-process-exit': 'off', // Allow in data pipelines
-  'node/no-unpublished-require': 'error',
-  'node/no-deprecated-api': 'warn',
-  'node/no-callback-literal': 'error',
-  'node/no-path-concat': 'error',
-  'node/no-sync': 'error',
-  'node/no-new-require': 'error',
-  'node/no-mixed-requires': 'error',
-  'node/no-process-env': 'warn',
-  'node/global-require': 'error',
-  'node/no-buffer-constructor': 'error',
-};
+const nodeRules = nodePlugin
+  ? {
+    'node/no-unsupported-features/es-syntax': 'error',
+    'node/no-missing-import': 'error',
+    'node/no-process-exit': 'off', // Allow in data pipelines
+    'node/no-unpublished-require': 'error',
+    'node/no-deprecated-api': 'warn',
+    'node/no-callback-literal': 'error',
+    'node/no-path-concat': 'error',
+    'node/no-sync': 'error',
+    'node/no-new-require': 'error',
+    'node/no-mixed-requires': 'error',
+    'node/no-process-env': 'warn',
+    'node/global-require': 'error',
+  }
+  : {};
 
 const dataProcessingConfig = [
   ...baseConfig,
