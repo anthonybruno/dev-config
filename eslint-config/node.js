@@ -8,7 +8,7 @@
  * @usage Import this config in your Node.js/Express project's eslint.config.js.
  */
 
-import baseConfig from './index';
+import baseConfig from './index.js';
 
 const loadPlugin = async (pluginName) => {
   try {
