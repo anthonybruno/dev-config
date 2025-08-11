@@ -73,7 +73,6 @@ const a11yRules = jsxA11yPlugin && {
   'jsx-a11y/role-has-required-aria-props': 'error',
   'jsx-a11y/role-supports-aria-props': 'error',
   'jsx-a11y/tabindex-no-positive': 'error',
-  'jsx-a11y/no-autofocus': 'error',
   'jsx-a11y/no-distracting-elements': 'error',
 };
 
@@ -83,13 +82,12 @@ const nextRules = nextPlugin && {
   '@next/next/no-img-element': 'error',
   '@next/next/no-sync-scripts': 'error',
   '@next/next/no-typos': 'error',
-  '@next/next/no-unwanted-polyfillio': 'error',
+  '@next/next/no-unwanted-polyfill': 'error',
   '@next/next/no-css-tags': 'error',
   '@next/next/no-head-element': 'error',
   '@next/next/no-page-custom-font': 'error',
   '@next/next/no-styled-jsx-in-document': 'error',
   '@next/next/no-title-in-document-head': 'error',
-  '@next/next/no-google-font-display': 'error',
   '@next/next/no-before-interactive-script-outside-document': 'error',
   '@next/next/no-duplicate-head': 'error',
   '@next/next/no-document-import-in-page': 'error',

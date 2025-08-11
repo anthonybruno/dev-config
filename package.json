@@ -1,7 +1,12 @@
 {
   "name": "abruno-dev-config",
+<<<<<<< HEAD
   "version": "1.0.5",
   "description": "Modern ESLint, TypeScript, and Prettier configurations for TypeScript/JavaScript development",
+=======
+  "version": "1.0.4",
+  "description": "Shared dev config for Signal projects. Includes ESLint, Prettier, TS, and more.",
+>>>>>>> 7933ebb (fix(react): removed deprecated eslint rules within react)
   "repository": {
     "type": "git",
     "url": "https://github.com/anthonybruno/dev-config.git"
