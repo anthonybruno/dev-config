@@ -178,8 +178,25 @@ const formattingRules = {
 
 const baseConfig = [
   {
-    files: ['**/*.ts', '**/*.js'],
-    ignores: ['dist/', 'node_modules/', '*.config.js', 'CHANGELOG.md'],
+    ignores: [
+      'node_modules/**',
+      'dist/**',
+      'build/**',
+      '.next/**',
+      '*.d.ts',
+      'package-lock.json',
+      'yarn.lock',
+    ],
+  },
+  {
+    files: [
+      '**/*.ts',
+      '**/*.tsx',
+      '**/*.js',
+      '**/*.jsx',
+      '**/*.mjs',
+      '**/*.cjs',
+    ],
     languageOptions: {
       parser: typescriptParser,
       ecmaVersion: 2022,
