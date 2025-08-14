@@ -189,14 +189,7 @@ const baseConfig = [
     ],
   },
   {
-    files: [
-      '**/*.ts',
-      '**/*.tsx',
-      '**/*.js',
-      '**/*.jsx',
-      '**/*.mjs',
-      '**/*.cjs',
-    ],
+    files: ['**/*.ts', '**/*.tsx'],
     languageOptions: {
       parser: typescriptParser,
       ecmaVersion: 2022,
@@ -218,7 +211,22 @@ const baseConfig = [
     },
   },
 
-  // Test Files Config
+  {
+    files: ['**/*.js', '**/*.jsx', '**/*.mjs', '**/*.cjs'],
+    languageOptions: {
+      ecmaVersion: 2022,
+      sourceType: 'module',
+    },
+    plugins: {
+      ...(importPlugin && { import: importPlugin }),
+    },
+    rules: {
+      ...baseRules,
+      ...(importRules || {}),
+      ...formattingRules,
+    },
+  },
+
   {
     files: ['*.test.ts', '*.test.tsx', '*.spec.ts', '*.spec.tsx'],
     languageOptions: {
@@ -231,7 +239,6 @@ const baseConfig = [
     },
   },
 
-  // Config Files Override
   {
     files: [
       '*.config.js',
@@ -240,6 +247,10 @@ const baseConfig = [
       'eslint-config/*.js',
       'prettier/.prettierrc.js',
     ],
+    languageOptions: {
+      ecmaVersion: 2022,
+      sourceType: 'module',
+    },
     rules: {
       'import/no-default-export': 'off',
       'no-console': 'off',
