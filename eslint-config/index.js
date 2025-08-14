@@ -163,7 +163,6 @@ const formattingRules = {
   'eol-last': 'error',
   'no-multiple-empty-lines': ['error', { max: 1, maxEOF: 0 }],
   'no-tabs': 'error',
-  indent: ['error', 2],
   'linebreak-style': ['error', 'unix'],
   'max-len': [
     'warn',
