@@ -1,6 +1,6 @@
 {
   "name": "abruno-dev-config",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Modern ESLint, TypeScript, and Prettier configurations for TypeScript/JavaScript development",
   "repository": {
     "type": "git",
