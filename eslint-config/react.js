@@ -43,8 +43,6 @@ const reactRules = reactPlugin && {
   'react/self-closing-comp': 'error',
   'react/jsx-closing-bracket-location': 'error',
   'react/jsx-closing-tag-location': 'error',
-  'react/jsx-indent-props': ['error', 2],
-  'react/jsx-indent': ['error', 2],
   'react/jsx-max-props-per-line': ['error', { maximum: 1, when: 'multiline' }],
   'react/jsx-first-prop-new-line': ['error', 'multiline'],
   'react/jsx-wrap-multilines': 'error',
