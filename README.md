@@ -1,22 +1,32 @@
-# Dev Config
+# @abruno/dev-config
 
-Modern ESLint, TypeScript, and Prettier configurations for TypeScript/JavaScript development. Built
-for solo developers and small teams who value clean, maintainable code.
+![ESLint](https://img.shields.io/badge/ESLint-4B32C3?logo=eslint&logoColor=white&style=flat-square)
+![Prettier](https://img.shields.io/badge/Prettier-F7B93E?logo=prettier&logoColor=black&style=flat-square)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white&style=flat-square)
+![Semantic Release](https://img.shields.io/badge/Semantic%20Release-494949?logo=semanticrelease&logoColor=white&style=flat-square)
+
+Opinionated shared configuration package for my projects. Provides consistent linting, formatting,
+TypeScript settings, and release automation across services.
+
+## What it includes
+
+- **ESLint** config with TypeScript support
+- **Prettier** formatting rules
+- **Commitlint** for commit message consistency
+- **TypeScript** base configs
+- **semantic-release** setup for automated publishing
+
+## Why
+
+Consistency matters more as projects and teams grow. Instead of duplicating configs across repos, I
+maintain them in a single package. This reduces setup friction, keeps standards aligned, and
+improves developer experience.
 
 ## Quick Start
 
 ```sh
 npx install-peerdeps -D abruno-dev-config
 ```
-
-## Features
-
-- **TypeScript** with strict type checking
-- **Import organization** with automatic sorting
-- **Accessibility rules** for React projects
-- **Security best practices** (no-eval, no-implied-eval)
-- **Modern patterns** (nullish coalescing, optional chaining)
-- **Zero conflicts** with Prettier
 
 ## Configurations
 
